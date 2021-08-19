@@ -1,6 +1,3 @@
-from math import log2, log10
-from datetime import datetime
-
 def fibmult(a,b):
     return [a[0]*b[0]+a[1]*b[1],a[0]*b[1]+a[1]*b[0]+a[1]*b[1]]
 
@@ -17,16 +14,8 @@ def fibonacci(arg):
     return s * f[0]
 
 
-n=1000000
 
-
-starttime=datetime.now()
-print(n,log10(fibonacci(n)))
-print(format(datetime.now()-starttime))
-
-
-
-# schlanker + etwas schneller:
+# by calling a single function. a bit faster
 
 def fib(n):
   if n < 0: return (-1)**(n % 2 + 1) * fib(-n)
@@ -43,5 +32,3 @@ def fib(n):
                 b * x + c * y)
       n -= 1
   return y
-
-
