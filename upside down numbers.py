@@ -1,15 +1,8 @@
-from datetime import datetime
-import tracemalloc
-
-from itertools import product
-
 def complete(numbers,c):
     n = len(numbers)
     rot = {0:0, 1:1, 6:9, 8:8, 9:6}
     if c == 0: return int(''.join([str(digit) for digit in numbers]+[str(rot[digit]) for digit in numbers[::-1]]))
     else: return int(''.join([str(digit) for digit in numbers[:-1]]+[str(rot[numbers[-1]])]+[str(rot[digit]) for digit in numbers[:-1][::-1]]))
-    
-
 
 def udn(n):
     nstr = str(n)
@@ -37,20 +30,3 @@ def udn(n):
                 count += lessc[ndig[nlen//2]]
                 if ndig[nlen//2] in [0, 1, 8] and complete(ndig[:nlen//2+1],1) < n: count += 1
     return shift + count
-
-def udrange(n,m):
-    return udn(m) - udn(n)
-
-n = 7
-m = 10
-
-
-starttime=datetime.now()
-#tracemalloc.start()
-print(n,udn(n))
-print(m,udn(m))
-print(n,m,udrange(n,m))
-#print(tracemalloc.get_traced_memory())
-#tracemalloc.stop()
-print(format(datetime.now()-starttime))
-
